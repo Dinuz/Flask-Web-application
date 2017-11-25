@@ -238,27 +238,51 @@ def main():
         return (str(e))
 
 
+# @app.route('/jinjaman/')
+# def jinjaman():
+#     try:
+#         gc.collect()
+#         data = [15, '15', 'Python is good', 'Python, Java, php, SQL, C++', '<p><strong>Hey there!</strong></p>']
+#         return render_template("jinja-templating.html", data=data)
+#     except Exception, e:
+#         return (str(e))
+
 @app.route('/jinjaman/')
 def jinjaman():
     try:
         gc.collect()
-        data = [15, '15', 'Python is good', 'Python, Java, php, SQL, C++', '<p><strong>Hey there!</strong></p>']
+        data = [15, '23', 'Pythoning', '<p>some more</p>']
         return render_template("jinja-templating.html", data=data)
-    except Exception, e:
+    except Exception as e:
         return (str(e))
 
 
 @app.route('/include_example/')
 def include_example():
     try:
-        replies = {'Jack': 'Cool post',
-                   'Jane': '+1',
-                   'Erika': 'Most definitely',
-                   'Bob': 'wow',
-                   'Carl': 'amazing!', }
+        replies = {
+
+            'Jack': 'Cool tutorial bro',
+            'Amy': 'Cool tutorial bro',
+            'John': 'Cool tutorial bro',
+            'Walter': 'Cool tutorial bro'
+        }
         return render_template("includes_tutorial.html", replies=replies)
     except Exception, e:
         return (str(e))
+
+
+# @app.route('/include_example/')
+# def include_example():
+#     try:
+#         replies = {'Jack': 'Cool post',
+#                    'Jane': '+1',
+#                    'Erika': 'Most definitely',
+#                    'Bob': 'wow',
+#                    'Carl': 'amazing!', }
+#         return render_template("includes_tutorial.html", replies=replies)
+#     except Exception, e:
+#         return (str(e))
 
 
 @app.route('/header.py')
