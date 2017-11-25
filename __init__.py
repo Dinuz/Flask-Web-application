@@ -178,8 +178,9 @@ def index(chartID='chart_ID', chart_type='bar', chart_height=350):
                            yAxis=yAxis)
 
 
+@app.route('/<path:urlpath>/', methods=['GET', 'POST'])
 @app.route('/', methods=['GET', 'POST'])
-def main():
+def main(urlpath='/'):
     form = RegistrationForm(request.form)
     try:
         c, conn = connection()
@@ -253,6 +254,16 @@ def jinjaman():
         gc.collect()
         data = [15, '23', 'Pythoning', '<p>some more</p>']
         return render_template("jinja-templating.html", data=data)
+    except Exception as e:
+        return (str(e))
+
+
+@app.route('/converters/')
+@app.route('/converters/<string:thread>/<int:page>/')
+def converterexample(thread, page=1):
+    try:
+        gc.collect()
+        return render_template("convertexample.html", thread=thread, page=page)
     except Exception as e:
         return (str(e))
 
