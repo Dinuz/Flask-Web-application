@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, \
-    url_for, request, session, flash, g, make_response, send_file
+    url_for, request, session, flash, g, make_response, send_file, send_from_directory
 from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
 from functools import wraps
 import MySQLdb
@@ -20,7 +20,7 @@ from content_management import Content
 import smtplib
 from flask_mail import Mail, Message
 
-app = Flask(__name__)
+app = Flask(__name__, instance_path='')
 # app.config.update(
 #     DEBUG=True,
 #     # EMAIL SETTINGS
@@ -131,15 +131,15 @@ class RegistrationForm(Form):
 def robots():
     return ("User-agent: *\nDisallow: /register/\nDisallow: /login/\nDisallow: /donation-success/")
 
+
 @app.route('/return-file/')
 def return_file():
-    return send_file('file path',attachment_filename='python.jpg')
+    return send_file('file path', attachment_filename='python.jpg')
+
 
 @app.route('/file-downloads/')
 def file_downloads():
     return render_template('downloads.html')
-
-
 
 
 @app.route('/send-mail/')
@@ -154,6 +154,7 @@ def send_mail():
         return "Mail sent successfully"
     except Exception as e:
         return str(e)
+
 
 #
 # @app.route('/return-files/')
@@ -281,6 +282,30 @@ def main(urlpath='/'):
 #         return render_template("jinja-templating.html", data=data)
 #     except Exception, e:
 #         return (str(e))
+
+
+def special_requirement(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        try:
+            if 'harrison' == session['username']:
+                return f(*args, **kwargs)
+            else:
+                return redirect(url_for('dashboard'))
+        except:
+            return redirect(url_for('dashboard'))
+
+    return wrap
+
+
+@app.route('/protected/<path:filename>')
+@special_requirement
+def protected(filename):
+    try:
+        return send_from_directory(os.path.join(app.instance_path, ''), filename)
+    except Exception as e:
+        return (str(e))
+
 
 @app.route('/jinjaman/')
 def jinjaman():
