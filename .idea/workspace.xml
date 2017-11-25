@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99b1ef4b-1e93-4e16-8cee-2bdd2652c5f4" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/downloads.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/__init__.py" afterPath="$PROJECT_DIR$/__init__.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,21 +18,31 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2679">
-              <caret line="141" column="101" lean-forward="false" selection-start-line="141" selection-start-column="101" selection-end-line="141" selection-end-column="101" />
+            <state relative-caret-position="307">
+              <caret line="135" column="64" lean-forward="false" selection-start-line="135" selection-start-column="64" selection-end-line="135" selection-end-column="64" />
               <folding>
                 <element signature="e#0#119#0" expanded="true" />
-                <marker date="1511620475000" expanded="true" signature="1651:1692" ph="SELECT * FRO... users" />
-                <marker date="1511620475000" expanded="true" signature="2503:2553" ph="UPDATE users... " />
-                <marker date="1511620475000" expanded="true" signature="6455:6496" ph="SELECT * FRO... users" />
-                <marker date="1511620475000" expanded="true" signature="7319:7360" ph="SELECT * FRO... users" />
-                <marker date="1511620475000" expanded="true" signature="7677:7742" ph="INSERT INTO users... " />
-                <marker date="1511620475000" expanded="true" signature="11663:11704" ph="SELECT * FRO... users" />
-                <marker date="1511620475000" expanded="true" signature="12436:12486" ph="UPDATE users... " />
-                <marker date="1511620475000" expanded="true" signature="13509:13550" ph="SELECT * FRO... users" />
-                <marker date="1511620475000" expanded="true" signature="14866:14907" ph="SELECT * FRO... users" />
-                <marker date="1511620475000" expanded="true" signature="15176:15255" ph="INSERT INTO users... " />
+                <marker date="1511620985000" expanded="true" signature="1651:1692" ph="SELECT * FRO... users" />
+                <marker date="1511620985000" expanded="true" signature="2503:2553" ph="UPDATE users... " />
+                <marker date="1511620985000" expanded="true" signature="6702:6743" ph="SELECT * FRO... users" />
+                <marker date="1511620985000" expanded="true" signature="7566:7607" ph="SELECT * FRO... users" />
+                <marker date="1511620985000" expanded="true" signature="7924:7989" ph="INSERT INTO users... " />
+                <marker date="1511620985000" expanded="true" signature="11910:11951" ph="SELECT * FRO... users" />
+                <marker date="1511620985000" expanded="true" signature="12683:12733" ph="UPDATE users... " />
+                <marker date="1511620985000" expanded="true" signature="13756:13797" ph="SELECT * FRO... users" />
+                <marker date="1511620985000" expanded="true" signature="15113:15154" ph="SELECT * FRO... users" />
+                <marker date="1511620985000" expanded="true" signature="15423:15502" ph="INSERT INTO users... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="downloads.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/downloads.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="6" column="77" lean-forward="false" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -68,6 +80,7 @@
     <findStrings>
       <find>main</find>
       <find>send</find>
+      <find>User</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -81,6 +94,7 @@
         <option value="$PROJECT_DIR$/templates/includes/comment_box.html" />
         <option value="$PROJECT_DIR$/templates/jinja-templating.html" />
         <option value="$PROJECT_DIR$/templates/convertexample.html" />
+        <option value="$PROJECT_DIR$/templates/downloads.html" />
         <option value="$PROJECT_DIR$/__init__.py" />
       </list>
     </option>
@@ -269,22 +283,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/downloads.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="77" lean-forward="false" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2679">
-          <caret line="141" column="101" lean-forward="false" selection-start-line="141" selection-start-column="101" selection-end-line="141" selection-end-column="101" />
+        <state relative-caret-position="307">
+          <caret line="135" column="64" lean-forward="false" selection-start-line="135" selection-start-column="64" selection-end-line="135" selection-end-column="64" />
           <folding>
             <element signature="e#0#119#0" expanded="true" />
-            <marker date="1511620475000" expanded="true" signature="1651:1692" ph="SELECT * FRO... users" />
-            <marker date="1511620475000" expanded="true" signature="2503:2553" ph="UPDATE users... " />
-            <marker date="1511620475000" expanded="true" signature="6455:6496" ph="SELECT * FRO... users" />
-            <marker date="1511620475000" expanded="true" signature="7319:7360" ph="SELECT * FRO... users" />
-            <marker date="1511620475000" expanded="true" signature="7677:7742" ph="INSERT INTO users... " />
-            <marker date="1511620475000" expanded="true" signature="11663:11704" ph="SELECT * FRO... users" />
-            <marker date="1511620475000" expanded="true" signature="12436:12486" ph="UPDATE users... " />
-            <marker date="1511620475000" expanded="true" signature="13509:13550" ph="SELECT * FRO... users" />
-            <marker date="1511620475000" expanded="true" signature="14866:14907" ph="SELECT * FRO... users" />
-            <marker date="1511620475000" expanded="true" signature="15176:15255" ph="INSERT INTO users... " />
+            <marker date="1511620985000" expanded="true" signature="1651:1692" ph="SELECT * FRO... users" />
+            <marker date="1511620985000" expanded="true" signature="2503:2553" ph="UPDATE users... " />
+            <marker date="1511620985000" expanded="true" signature="6702:6743" ph="SELECT * FRO... users" />
+            <marker date="1511620985000" expanded="true" signature="7566:7607" ph="SELECT * FRO... users" />
+            <marker date="1511620985000" expanded="true" signature="7924:7989" ph="INSERT INTO users... " />
+            <marker date="1511620985000" expanded="true" signature="11910:11951" ph="SELECT * FRO... users" />
+            <marker date="1511620985000" expanded="true" signature="12683:12733" ph="UPDATE users... " />
+            <marker date="1511620985000" expanded="true" signature="13756:13797" ph="SELECT * FRO... users" />
+            <marker date="1511620985000" expanded="true" signature="15113:15154" ph="SELECT * FRO... users" />
+            <marker date="1511620985000" expanded="true" signature="15423:15502" ph="INSERT INTO users... " />
           </folding>
         </state>
       </provider>

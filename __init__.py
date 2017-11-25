@@ -131,6 +131,16 @@ class RegistrationForm(Form):
 def robots():
     return ("User-agent: *\nDisallow: /register/\nDisallow: /login/\nDisallow: /donation-success/")
 
+@app.route('/return-file/')
+def return_file():
+    return send_file('file path',attachment_filename='python.jpg')
+
+@app.route('/file-downloads/')
+def file_downloads():
+    return render_template('downloads.html')
+
+
+
 
 @app.route('/send-mail/')
 def send_mail():
@@ -145,23 +155,23 @@ def send_mail():
     except Exception as e:
         return str(e)
 
-
-@app.route('/return-files/')
-def return_files_tut():
-    try:
-        return send_file('/var/www/PythonProgramming/PythonProgramming/static/images/python.jpg',
-                         attachment_filename='python.jpg')
-        # return send_file('/var/www/PythonProgramming/PythonProgramming/static/ohhey.pdf', attachment_filename='ohhey.pdf')
-    except Exception as e:
-        return str(e)
-
-
-@app.route('/file-downloads/')
-def file_downloads():
-    try:
-        return render_template('downloads.html')
-    except Exception as e:
-        return str(e)
+#
+# @app.route('/return-files/')
+# def return_files_tut():
+#     try:
+#         return send_file('/var/www/PythonProgramming/PythonProgramming/static/images/python.jpg',
+#                          attachment_filename='python.jpg')
+#         # return send_file('/var/www/PythonProgramming/PythonProgramming/static/ohhey.pdf', attachment_filename='ohhey.pdf')
+#     except Exception as e:
+#         return str(e)
+#
+#
+# @app.route('/file-downloads/')
+# def file_downloads():
+#     try:
+#         return render_template('downloads.html')
+#     except Exception as e:
+#         return str(e)
 
 
 ###### DEV VERSION #####
