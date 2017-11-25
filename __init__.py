@@ -21,9 +21,19 @@ import smtplib
 from flask_mail import Mail, Message
 
 app = Flask(__name__)
+# app.config.update(
+#     DEBUG=True,
+#     # EMAIL SETTINGS
+#     MAIL_SERVER='smtp.gmail.com',
+#     MAIL_PORT=465,
+#     MAIL_USE_SSL=True,
+#     MAIL_USERNAME='your@gmail.com',
+#     MAIL_PASSWORD='yourpassword'
+# )
+# mail = Mail(app)
+
 app.config.update(
     DEBUG=True,
-    # EMAIL SETTINGS
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT=465,
     MAIL_USE_SSL=True,
@@ -120,6 +130,20 @@ class RegistrationForm(Form):
 @app.route('/robots.txt/')
 def robots():
     return ("User-agent: *\nDisallow: /register/\nDisallow: /login/\nDisallow: /donation-success/")
+
+
+@app.route('/send-mail/')
+def send_mail():
+    try:
+        msg = Message("Send mail tutorial",
+                      sender="Yoursendinggmail@gmail.com",
+                      recipients=["yourreciepientgmail@gmail.com"])
+        msg.body = "You man have you heard about this new shores.."
+        msg.html = render_template('/mails/reset-password.html', username=username, password=password)
+        mail.send(msg)
+        return "Mail sent successfully"
+    except Exception as e:
+        return str(e)
 
 
 @app.route('/return-files/')
