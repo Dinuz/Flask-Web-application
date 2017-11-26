@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, \
-    url_for, request, session, flash, g, make_response, send_file, send_from_directory
+    url_for, request, session, flash, g, make_response, send_file, send_from_directory, jsonify
 from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
 from functools import wraps
 import MySQLdb
@@ -303,6 +303,26 @@ def special_requirement(f):
 def protected(filename):
     try:
         return send_from_directory(os.path.join(app.instance_path, ''), filename)
+    except Exception as e:
+        return (str(e))
+
+
+@app.route('/background_process/')
+def background_process():
+    try:
+        lang = request.args.get('proglang')
+        if str(lang).lower() == 'python':
+            return jsonify(result='You are wise!')
+        else:
+            return jsonify(result="Try again!")
+    except Exception as e:
+        return (str(e))
+
+
+@app.route('/interactive/')
+def interactive():
+    try:
+        return render_template("interactive.html")
     except Exception as e:
         return (str(e))
 
