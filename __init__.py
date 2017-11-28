@@ -20,6 +20,8 @@ from content_management import Content
 import smtplib
 from flask_mail import Mail, Message
 import pygal
+from werkzeug.datastructures import ImmutableOrderedMultiDict
+import requests
 
 app = Flask(__name__, instance_path='')
 # app.config.update(
@@ -327,6 +329,7 @@ def interactive():
     except Exception as e:
         return (str(e))
 
+
 @app.route('/pygalexample/')
 def pygalexample():
     try:
@@ -338,10 +341,79 @@ def pygalexample():
         graph.add('C++', [5, 51, 54, 102, 150, 201])
         graph.add('All others combined!', [5, 15, 21, 55, 92, 105])
         graph_data = graph.render_data_uri()
-        return render_template("graphing.html", graph_data = graph_data)
+        return render_template("graphing.html", graph_data=graph_data)
     except Exception as e:
         return (str(e))
 
+
+@app.route('/ipn/', methods=['POST'])
+def ipn():
+    try:
+        arg = ''
+        request.parameter_storage_class = ImmutableOrderedMultiDict
+        values = request.form
+        for x, y in values.iteritems():
+            arg += "&{x}={y}".format(x=x, y=y)
+
+        validate_url = 'https://www.sandbox.paypal.com' \
+                       '/cgi-bin/webscr?cmd=_notify-validate{arg}' \
+            .format(arg=arg)
+        r = requests.get(validate_url)
+        if r.text == 'VERIFIED':
+            try:
+                payer_email = thwart(request.form.get('payer_email'))
+                unix = int(time.time())
+                payment_date = thwart(request.form.get('payment_date'))
+                username = thwart(request.form.get('custom'))
+                last_name = thwart(request.form.get('last_name'))
+                payment_gross = thwart(request.form.get('payment_gross'))
+                payment_fee = thwart(request.form.get('payment_fee'))
+                payment_net = float(payment_gross) - float(payment_fee)
+                payment_status = thwart(request.form.get('payment_status'))
+                txn_id = thwart(request.form.get('txn_id'))
+            except Exception as e:
+                with open('/tmp/ipnout.txt', 'a') as f:
+                    data = 'ERROR WITH IPN DATA\n' + str(values) + '\n'
+                    f.write(data)
+
+            with open('/tmp/ipnout.txt', 'a') as f:
+                data = 'SUCCESS\n' + str(values) + '\n'
+                f.write(data)
+
+            c, conn = connection()
+            c.execute(
+                "INSERT INTO ipn (unix, payment_date, username, last_name, payment_gross, payment_fee, payment_net, payment_status, txn_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                (unix, payment_date, username, last_name, payment_gross, payment_fee, payment_net, payment_status,
+                 txn_id))
+            conn.commit()
+            c.close()
+            conn.close()
+            gc.collect()
+
+        else:
+            with open('/tmp/ipnout.txt', 'a') as f:
+                data = 'FAILURE\n' + str(values) + '\n'
+                f.write(data)
+
+        return r.text
+    except Exception as e:
+        return str(e)
+
+
+@app.route('/purchase/')
+def purchase():
+    try:
+        return render_template("purchase.html")
+    except Exception as e:
+        return (str(e))
+
+
+@app.route('/success/')
+def success():
+    try:
+        return render_template("success.html")
+    except Exception as e:
+        return (str(e))
 
 
 @app.route('/jinjaman/')
